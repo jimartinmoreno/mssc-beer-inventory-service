@@ -19,6 +19,7 @@ package guru.sfg.beer.inventory.service.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -36,6 +37,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @MappedSuperclass
+@ToString
 public class BaseEntity {
 
     public BaseEntity(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate) {

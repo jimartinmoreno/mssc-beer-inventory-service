@@ -17,6 +17,7 @@
 
 package guru.sfg.beer.inventory.service.web.mappers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;

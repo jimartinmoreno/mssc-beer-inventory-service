@@ -16,10 +16,7 @@
  */
 package guru.sfg.beer.inventory.service.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
@@ -34,6 +31,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
+@ToString
 public class BeerInventory extends BaseEntity {
 
     @Builder

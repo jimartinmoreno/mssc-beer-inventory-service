@@ -26,8 +26,6 @@ import java.util.UUID;
  * Created by jt on 2019-01-26.
  */
 public interface BeerInventoryRepository extends JpaRepository<BeerInventory, UUID> {
-
     List<BeerInventory> findAllByBeerId(UUID beerId);
-
     List<BeerInventory> findAllByUpc(String upc);
 }
