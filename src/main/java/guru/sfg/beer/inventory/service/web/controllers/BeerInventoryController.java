@@ -32,6 +32,6 @@ public class BeerInventoryController {
         log.debug("Finding Inventory for beerInventoryList: " + beerInventoryList);
         return beerInventoryList.stream()
                 .map(beerInventoryMapper::beerInventoryToBeerInventoryDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
