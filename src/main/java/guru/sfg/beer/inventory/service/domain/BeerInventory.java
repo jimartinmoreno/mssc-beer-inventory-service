@@ -31,7 +31,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@ToString
+@ToString(callSuper = true)
 public class BeerInventory extends BaseEntity {
 
     @Builder
