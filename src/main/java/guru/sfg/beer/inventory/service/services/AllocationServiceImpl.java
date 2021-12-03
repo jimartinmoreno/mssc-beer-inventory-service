@@ -46,6 +46,7 @@ public class AllocationServiceImpl implements AllocationService {
         List<BeerInventory> beerInventoryList = beerInventoryRepository.findAllByUpc(beerOrderLine.getUpc());
 
         beerInventoryList.forEach(beerInventory -> {
+
             int inventory = (beerInventory.getQuantityOnHand() == null) ? 0 : beerInventory.getQuantityOnHand();
             int orderQty = (beerOrderLine.getOrderQuantity() == null) ? 0 : beerOrderLine.getOrderQuantity();
             int allocatedQty = (beerOrderLine.getQuantityAllocated() == null) ? 0 : beerOrderLine.getQuantityAllocated();
@@ -60,7 +61,6 @@ public class AllocationServiceImpl implements AllocationService {
             } else if (inventory > 0) { //partial allocation
                 beerOrderLine.setQuantityAllocated(allocatedQty + inventory);
                 beerInventory.setQuantityOnHand(0);
-
             }
 
             if (beerInventory.getQuantityOnHand() == 0) {
