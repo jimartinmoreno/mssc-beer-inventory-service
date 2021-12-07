@@ -15,6 +15,18 @@
         <version>1.0.17</version>
     </parent>
 
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--                <version>2020.0.3</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -32,6 +44,11 @@
             <artifactId>spring-cloud-commons</artifactId>
             <version>3.0.4</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+<!--        </dependency>-->
 
         <!-- Exclude Spring Boot's Default Logging -->
         <dependency>
@@ -73,24 +90,9 @@
             <artifactId>activemq-broker</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!--   SI DESCOMENTAMOS ESTAS DEPENDENCIAS DEJA SE USAR EL BROKER DE ARTEMIS
-                Y USARIA EL BROKER DE ACTIVE MQ EMBEBIDO    -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework</groupId>-->
-        <!--            <artifactId>spring-jms</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>javax.jms</groupId>-->
-        <!--            <artifactId>javax.jms-api</artifactId>-->
-        <!--            <version>2.0.1</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-                        <!--
-                           JmsOperations requires the javax jms classes for some of its methods, so you need them in your build path.
-                       -->
-        <!--            <groupId>org.apache.activemq</groupId>-->
-        <!--            <artifactId>activemq-broker</artifactId>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-artemis</artifactId>
+        </dependency>
     </dependencies>
 </project>
