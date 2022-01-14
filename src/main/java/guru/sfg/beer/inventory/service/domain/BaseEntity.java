@@ -30,13 +30,12 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
- * Created by jt on 2019-01-26.
+ * Clase de la que heredan todas las entidades JPA del servicio
  */
-
 @Setter
 @Getter
 @NoArgsConstructor
-@MappedSuperclass
+@MappedSuperclass // Designates a class whose mapping information is applied to the entities that inherit from it.
 @ToString
 public class BaseEntity {
 

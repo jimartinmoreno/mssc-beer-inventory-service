@@ -9,7 +9,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by jt on 2/29/20.
+ * Listener JMS de la cola JmsConfig.DEALLOCATE_ORDER_QUEUE
  */
 @Slf4j
 @RequiredArgsConstructor

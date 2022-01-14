@@ -10,7 +10,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by jt on 2019-07-21.
+ * Listener JMS que escucha a nuevas peticiones de nuevo inventario para incrementarlo
  */
 @Slf4j
 @RequiredArgsConstructor

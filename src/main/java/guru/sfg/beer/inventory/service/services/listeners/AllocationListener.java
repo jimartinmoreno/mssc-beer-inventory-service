@@ -11,7 +11,8 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by jt on 12/3/19.
+ * Listener JMS de la cola JmsConfig.ALLOCATE_ORDER_QUEUE  que llama al servicio para crear una nueva order
+ * y envía un mensaje de respuesta con el resultado a la cola JmsConfig.ALLOCATE_ORDER_RESPONSE_QUEUE
  */
 @Slf4j
 @RequiredArgsConstructor

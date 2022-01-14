@@ -7,6 +7,9 @@ import org.springframework.jms.support.converter.MappingJackson2MessageConverter
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
+/**
+ * Configuracion JMS para las colas empleadas por los servicios
+ */
 @Configuration
 public class JmsConfig {
 

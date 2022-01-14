@@ -5,7 +5,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * Created by jt on 5/16/20.
+ * Configuración de seguridad que habilita la basic auth para este servicio
  */
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

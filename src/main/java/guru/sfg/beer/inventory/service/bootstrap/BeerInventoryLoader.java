@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * Se ejecuta al inciarse el servicio
  * Solo se ejecuta si no hay beers en la BD creados con el script data.sql
  */
 @RequiredArgsConstructor
@@ -27,19 +28,33 @@ public class BeerInventoryLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("run beer Inventory count: " + beerInventoryRepository.count());
-        if (beerInventoryRepository.count() == 0) {
+        if (beerInventoryRepository.count() == 0) { // Comprueba si existe inventario de cervezas
             loadBeerObjects();
         }
     }
 
     private void loadBeerObjects() {
         BeerInventory b1 = BeerInventory.builder()
-                .beerId(UUID.fromString("c05d52d0-b2fb-455d-96d7-e8a1f053720a"))
+                .beerId(UUID.fromString("8552039b-1979-4ddf-a368-65814dff99fd"))
                 .upc(BEER_1_UPC)
                 .quantityOnHand(12)
                 .build();
 
         beerInventoryRepository.save(b1);
+
+        BeerInventory b2 = BeerInventory.builder()
+                .beerId(UUID.fromString("c05d52d0-b2fb-455d-96d7-e8a1f053720a"))
+                .upc(BEER_2_UPC)
+                .quantityOnHand(12)
+                .build();
+        beerInventoryRepository.save(b2);
+
+        BeerInventory b3 = BeerInventory.builder()
+                .beerId(UUID.fromString("45772dd4-3e82-4d49-9951-4b4d8d3a0a1b"))
+                .upc(BEER_3_UPC)
+                .quantityOnHand(12)
+                .build();
+        beerInventoryRepository.save(b3);
 
         List<BeerInventory> beerInventoryList = beerInventoryRepository.findAll();
         log.info("##### beerInventoryList >> " + beerInventoryList);

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Created by jt on 2019-09-09.
+ * Servicio que gestiona el inventario cuando recibe una nueva orden
  */
 @Slf4j
 @RequiredArgsConstructor
@@ -28,14 +28,15 @@ public class AllocationServiceImpl implements AllocationService {
         AtomicInteger totalOrdered = new AtomicInteger();
         AtomicInteger totalAllocated = new AtomicInteger();
 
-        beerOrderDto.getBeerOrderLines().forEach(beerOrderLine -> {
-            if ((((beerOrderLine.getOrderQuantity() != null ? beerOrderLine.getOrderQuantity() : 0)
-                    - (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0)) > 0)) {
-                allocateBeerOrderLine(beerOrderLine);
-            }
-            totalOrdered.set(totalOrdered.get() + beerOrderLine.getOrderQuantity());
-            totalAllocated.set(totalAllocated.get() + (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0));
-        });
+        beerOrderDto.getBeerOrderLines()
+                .forEach(beerOrderLine -> {
+                    if ((((beerOrderLine.getOrderQuantity() != null ? beerOrderLine.getOrderQuantity() : 0)
+                            - (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0)) > 0)) {
+                        allocateBeerOrderLine(beerOrderLine);
+                    }
+                    totalOrdered.set(totalOrdered.get() + beerOrderLine.getOrderQuantity());
+                    totalAllocated.set(totalAllocated.get() + (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0));
+                });
 
         log.debug("Total Ordered: " + totalOrdered.get() + " Total Allocated: " + totalAllocated.get());
 

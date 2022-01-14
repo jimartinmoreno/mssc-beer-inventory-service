@@ -5,7 +5,6 @@ import guru.sfg.beer.inventory.service.domain.BeerInventory;
 import guru.sfg.beer.inventory.service.repositories.BeerInventoryRepository;
 import guru.sfg.beer.inventory.service.web.mappers.BeerInventoryMapper;
 import guru.sfg.brewery.model.BeerInventoryDto;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -27,20 +26,19 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Test unitario de la capa MVC, solamente se prueba el controller y se mockea la respuesta del servicio
+ * Test unitario de la capa MVC, solamente se prueba el controller y se mockean las respuestas de los servicios
  *
  * @WebMvcTest >> If you want to focus only on the web layer and not start a complete ApplicationContext
- * <p>
+ *
  * Annotation that can be used for a Spring MVC test that focuses only on Spring MVC components.
  * Using this annotation will disable full auto-configuration and instead apply only configuration relevant to MVC tests
- * (i.e. @Controller, @ControllerAdvice, @JsonComponent, Converter/GenericConverter, Filter, WebMvcConfigurer
- * and HandlerMethodArgumentResolver beans but not @Component, @Service or @Repository beans).
- * <p>
+ *
  * auto-configures the Spring MVC infrastructure and limits scanned beans to @Controller, @ControllerAdvice, @JsonComponent,
  * Converter, GenericConverter, Filter, HandlerInterceptor, WebMvcConfigurer, WebMvcRegistrations, and
  * HandlerMethodArgumentResolver
- * <p>
+
  * Regular @Component and @ConfigurationProperties beans are not scanned when the @WebMvcTest annotation is used.
+ *
  * @EnableConfigurationProperties can be used to include @ConfigurationProperties beans.
  */
 @WebMvcTest(controllers = {BeerInventoryController.class})
@@ -50,7 +48,7 @@ class BeerInventoryControllerTest {
     MockMvc mockMvc;
 
     @Autowired
-    ObjectMapper objectMapper;
+    ObjectMapper objectMapper; // Lo usamos para transformar los DTO en JSON Para simular una petición al controller
 
     @MockBean
     BeerInventoryRepository beerInventoryRepository;
@@ -59,7 +57,7 @@ class BeerInventoryControllerTest {
     BeerInventoryMapper beerInventoryMapper;
 
     @Test
-    @WithMockUser(username = "good", password = "beer", roles = "USER")
+    @WithMockUser(username = "good", password = "beer", roles = "USER") // Mockea las credenciales
     void listBeersByIdTest() throws Exception {
         given(beerInventoryRepository.findAllByBeerId(any())).willReturn(getValidListBeer());
         given(beerInventoryMapper.beerInventoryToBeerInventoryDto(any())).willReturn(new BeerInventoryDto());
